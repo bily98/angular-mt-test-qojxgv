@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-6 mt-4">
+    <h3>EUR Rates</h3>
+    <h5>Date: {{ exchangeEURRates.date | date: 'dd-MM-yyyy' }}</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let rate of exchangeEURRates.rates
+                | keyvalue
+                | paginate: { id: 'EUR', itemsPerPage: 5, currentPage: pEUR }
+            "
+          >
+            <td>{{ rate.key }}</td>
+            <td>{{ rate.value | number: '1.0-6' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <pagination-controls
+          id="EUR"
+          (pageChange)="pEUR = $event"
+        ></pagination-controls>
+        <button class="btn btn-outline-secondary" (click)="refreshEURRates()">
+          Refresh EUR Rates
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-4">
+    <h3>USD Rates</h3>
+    <h5>Date: {{ exchangeUSDRates.date | date: 'dd-MM-yyyy' }}</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let rate of exchangeUSDRates.rates
+                | keyvalue
+                | paginate: { id: 'USD', itemsPerPage: 5, currentPage: pUSD }
+            "
+          >
+            <td>{{ rate.key }}</td>
+            <td>{{ rate.value | number: '1.0-6' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <pagination-controls
+          id="USD"
+          (pageChange)="pUSD = $event"
+        ></pagination-controls>
+        <button class="btn btn-outline-secondary" (click)="refreshUSDRates()">
+          Refresh USD Rates
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
