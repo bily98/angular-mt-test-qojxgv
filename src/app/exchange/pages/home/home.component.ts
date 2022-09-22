@@ -51,13 +51,13 @@ export class HomeComponent implements OnInit {
     this.callExchangeEURRates();
 
     this.obs.unsubscribe();
-    //this.createInterval();
+    this.createInterval();
   }
 
   refreshUSDRates() {
     this.callExchangeUSDRates();
 
     this.obs.unsubscribe();
-    //this.createInterval();
+    this.createInterval();
   }
 }
