@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     this.callExchangeEURRates();
     this.callExchangeUSDRates();
 
-    //this.createInterval();
+    this.createInterval();
   }
 
   callExchangeEURRates() {
